@@ -1,6 +1,7 @@
 import type { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 import "@nomicfoundation/hardhat-ethers";
+import "hardhat-deploy";
 import * as dotenv from "dotenv";
 dotenv.config();
 
@@ -9,6 +10,11 @@ const DEPLOYER_KEY = process.env.DEPLOYER_PRIVATE_KEY || "";
 
 const config: HardhatUserConfig = {
   solidity: { compilers: [{ version: "0.8.28" }] },
+  namedAccounts: {
+    deployer: {
+      default: 0, // first signer in ethers.getSigners()
+    },
+  },
 
   networks: {
     localhost: {
@@ -23,13 +29,16 @@ const config: HardhatUserConfig = {
     },
     mainnet: {
       url: MAINNET_URL,
-      chainId: 1, // Ethereum mainnet chain-id
-      accounts: DEPLOYER_KEY // or [DEPLOYER_KEY] for a single-key array
-        ? [DEPLOYER_KEY]
-        : [],
+      // chainId: 1, // Ethereum mainnet chain-id
+      // accounts: DEPLOYER_KEY // or [DEPLOYER_KEY] for a single-key array
+      //   ? [DEPLOYER_KEY]
+      //   : [],
       // gasPrice: 20_000_000_000,  // optional
       // allowUnlimitedContractSize: true,
     },
+  },
+  mocha: {
+    timeout: 60_000,
   },
 };
 
