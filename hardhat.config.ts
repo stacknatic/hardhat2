@@ -5,8 +5,8 @@ import "hardhat-deploy";
 import * as dotenv from "dotenv";
 dotenv.config();
 
-const MAINNET_URL = process.env.MAINNET_URL || "http://192.168.1.101:8545";
-const DEPLOYER_KEY = process.env.DEPLOYER_PRIVATE_KEY || "";
+const MAINNET_URL = process.env.MAINNET_URL;
+const DEPLOYER_KEY = process.env.DEPLOYER_PRIVATE_KEY;
 
 const config: HardhatUserConfig = {
   solidity: { compilers: [{ version: "0.8.28" }] },
