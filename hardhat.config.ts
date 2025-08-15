@@ -6,7 +6,7 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 const MAINNET_URL = process.env.MAINNET_URL;
-const DEPLOYER_KEY = process.env.DEPLOYER_PRIVATE_KEY;
+// const DEPLOYER_KEY = process.env.DEPLOYER_PRIVATE_KEY;
 
 const config: HardhatUserConfig = {
   solidity: { compilers: [{ version: "0.8.28" }] },
@@ -29,10 +29,6 @@ const config: HardhatUserConfig = {
     },
     mainnet: {
       url: MAINNET_URL,
-      // chainId: 1, // Ethereum mainnet chain-id
-      // accounts: DEPLOYER_KEY // or [DEPLOYER_KEY] for a single-key array
-      //   ? [DEPLOYER_KEY]
-      //   : [],
       // gasPrice: 20_000_000_000,  // optional
       // allowUnlimitedContractSize: true,
     },
@@ -43,9 +39,3 @@ const config: HardhatUserConfig = {
 };
 
 export default config;
-
-// const config: HardhatUserConfig = {
-//   solidity: "0.8.28",
-// };
-
-// export default config;

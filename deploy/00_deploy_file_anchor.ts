@@ -6,7 +6,8 @@ const deployFileAnchor: DeployFunction = async (
 ) => {
   const { deployments, getNamedAccounts } = hre;
   const { deploy } = deployments;
-  const { deployer } = await getNamedAccounts();
+  // const { deployer } = await getNamedAccounts();
+  const deployer = "0x0ad9aabda8c58245adcc01a212d7a901e55381bf";
 
   await deploy("FileAnchor", {
     from: deployer,
